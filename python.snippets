@@ -1,0 +1,92 @@
+snippet @p
+@property
+def $1(self):
+	$0
+
+@$1.setter
+def $1(self, value)
+	self._$1 = value
+endsnippet
+
+snippet lc "list comprension"
+${1:var} = [${2:o} for $2 in ${3:iterable}]
+endsnippet
+
+snippet dc "dictionary comprension"
+${1:var} = {${2:k}: ${3:v} for $2, $3 in ${4:iterable}}
+endsnippet
+
+snippet lj
+with open($1) as file:
+	${2:data} = json.load(file)
+	$0
+endsnippet
+
+snippet wof
+with open($1) as file:
+	${2:data} = [line.strip() for line in file]
+	$0
+endsnippet
+
+snippet cl "basic class" -b
+class $1:
+	"""${2:<++>}"""
+
+	def __init__(self$3):
+		$0
+endsnippet
+
+snippet p "print"
+print("$0")
+endsnippet
+
+snippet fp "print with fstring"
+print(f"$0")
+endsnippet
+
+snippet d "basic function" -b
+def $1($2):
+	"""${3:<++>}"""
+	$0
+endsnippet
+
+snippet dm "def main"
+def main():
+endsnippet
+
+snippet ifm "setup main" -b
+def main():
+	$0
+
+
+if __name__ == "__main__":
+	main()
+endsnippet
+
+snippet pld "disable pylint"
+# pylint: disable=$1
+endsnippet
+
+snippet bp "basepath stuff"
+basepath = pathlib.Path(__file__).resolve().parent
+endsnippet
+
+snippet spa "basepath stuff" b
+basepath = pathlib.Path(__file__).resolve().parent
+sys.path.append(str(basepath))
+endsnippet
+
+snippet sup "default super"
+super().__init__()
+endsnippet
+
+snippet ipl "pathlib"
+import pathlib
+endsnippet
+
+snippet h "header"
+#!/usr/bin/env python
+# coding: utf-8
+# Author: James Casey <hanavi@gmail.com>
+# Last Updated: __DATE__
+endsnippet
