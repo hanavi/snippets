@@ -16,8 +16,8 @@ snippet dc "dictionary comprension"
 ${1:var} = {${2:k}: ${3:v} for $2, $3 in ${4:iterable}}
 endsnippet
 
-snippet lj
-with open($1) as file:
+snippet lj "json load" b
+with open(${1:filename}) as file:
 	${2:data} = json.load(file)
 	$0
 endsnippet
@@ -51,7 +51,12 @@ def $1($2):
 endsnippet
 
 snippet dm "def main"
-def main():
+def main($1):
+    $0
+endsnippet
+
+snippet li "log info" b
+log.info("$0")
 endsnippet
 
 snippet ifm "setup main" -b
@@ -89,6 +94,27 @@ snippet h "header"
 # coding: utf-8
 # Author: James Casey <hanavi@gmail.com>
 # Last Updated: __DATE__
+endsnippet
+
+snippet df "fancy function" b
+def $1($2) -> ${3:None}:
+    """$4
+
+    Parameters
+    ---------- `!p
+args = t[2].split(",")
+snip.rv = ''
+for arg in args:
+    arg = arg.strip()
+    arg = arg.split(":")[0]
+    snip += f"        {arg}: <++>"
+snip.rv += "\n" + snip.mkline(line='', indent=None)
+`
+    Returns
+    -------
+	    ${5:None}
+    """
+
 endsnippet
 
 snippet dsp "Doc strings"
@@ -153,6 +179,11 @@ if entries:
     snip.rv += "\n" + snip.mkline(line='', indent=None)
 `}
 endsnippet
+
+snippet si "quick and dirty self initializer" b
+self.$1 = $1
+endsnippet
+
 
 snippet dfv2 "create a dictionary from variables (<++> for vars)" b
 $1 = {
@@ -344,6 +375,14 @@ if len(entries) > 1:
     for line in ovars:
         snip += '{} ='.format(line) + ' {}["<++>"]'.format(dictvar)
 `
+endsnippet
+
+snippet tn "torch.nn" b
+from torch import nn
+endsnippet
+
+snippet fn "filename"
+${1:filename} = pathlib.Path(${2:__file__}).resolve().parent
 endsnippet
 
 # snippet dg

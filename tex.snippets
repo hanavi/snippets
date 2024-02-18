@@ -1,0 +1,45 @@
+snippet \b
+\begin{$1}
+$0
+\end{$1}
+endsnippet
+
+snippet \bi
+\begin{itemize}
+	\item $0
+\end{itemize}
+endsnippet
+
+snippet \i
+\item $0
+endsnippet
+
+snippet \up
+\usepackage{$0}
+endsnippet
+
+snippet \table
+\begin{table}[${1:h!}]
+	\centering
+	\begin{tabular}{$2}
+	${3:<++>} \\\\
+	\hline\hline
+	$0 \\\\
+	\hline\hline
+	\label{${4:<++>}}
+	\caption{${5:<++>}}
+\end{table}
+endsnippet
+
+snippet \s
+\section{$0}
+endsnippet
+
+snippet \ss
+\subsection{$0}
+endsnippet
+
+snippet \sss
+\subsubsection{$0}
+endsnippet
+
