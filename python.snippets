@@ -33,6 +33,7 @@ class $1:
 	"""${2:<++>}"""
 
 	def __init__(self$3):
+		super().__init__()
 		$0
 endsnippet
 
@@ -81,21 +82,38 @@ basepath = pathlib.Path(__file__).resolve().parent
 sys.path.append(str(basepath))
 endsnippet
 
-snippet sup "default super"
+snippet di "default init" b
+def __init__(self):
+    super().__init__()
+    $1
+endsnippet
+
+snippet sup "default super" b
 super().__init__()
 endsnippet
 
-snippet ipl "pathlib"
+snippet ipl "pathlib" b
 import pathlib
 endsnippet
 
-snippet #h "header"
+snippet mpl "matplotlib" b
+from matplotlib import pyplot as plt
+endsnippet
+
+snippet #h "header" b
 #!/usr/bin/env python
 # coding: utf-8
 # Author: James Casey <hanavi@gmail.com>
 # Last Updated: __DATE__
 endsnippet
 
+snippet i "import" b
+import $1
+endsnippet
+
+snippet fi "import" b
+from $1 import $2
+endsnippet
 snippet df "fancy function" b
 def $1($2) -> ${3:None}:
     """$4
@@ -180,7 +198,7 @@ if entries:
 `}
 endsnippet
 
-snippet si "quick and dirty self initializer" b
+snippet sv "quick and dirty self initializer" b
 self.$1 = $1
 endsnippet
 
@@ -392,3 +410,65 @@ endsnippet
 # snippet ig
 # log.info(f'$1: {$1}')
 # endsnippet
+
+snippet lmh "lightning module headers" b
+from torch import optim
+from torch.nn import functional as F
+from torchmetrics.functional import accuracy
+import lightning as L
+endsnippet
+
+snippet lm "lightning module" b
+class LitModel(L.LightningModule):
+	"""Basic lightning model."""
+
+	def __init__(self, model, learning_rate=None):
+		super().__init__()
+
+		self.model = model
+		self.learning_rate = learning_rate if learning_rate is not None else 1e-4
+
+	def configure_optimizers(self):
+		"""Configure optimizer."""
+
+		optimizer = optim.AdamW(self.model.parameters(), lr=self.learning_rate)
+		return optimizer
+
+	def training_step(self, batch):
+		"""Training step."""
+
+		data, labels = batch
+		preds = self.model(data)
+		loss = F.cross_entropy(preds, labels)
+		self.log('loss/training', loss)
+
+		return loss
+
+	def validation_step(self, batch):
+		"""Validation step."""
+
+		data, labels = batch
+		preds = self.model(data)
+		loss = F.cross_entropy(preds, labels)
+		val_accuracy = accuracy(preds, target, task='binary')
+
+		self.log('loss/validation', loss)
+		self.log('accuracy', val_accuracy)
+
+		return loss
+endsnippet
+
+snippet lt "lightning trainer" b
+train_loader, valid_loader = load_data()
+
+model  = load_model()
+lit_model = LitModel(model)
+
+trainer = L.Trainer()
+trainer.fit(
+	lit_model,
+	train_dataloaders=train_loader,
+	val_dataloaders=valid_loader,
+	max_epochs=100,
+)
+endsnippet
