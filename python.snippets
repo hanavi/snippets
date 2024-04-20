@@ -8,6 +8,10 @@ def $1(self, value)
 	self._$1 = value
 endsnippet
 
+snippet jp "Prety print json" b
+print(json.dumps($1, indent=4))
+endsnippet
+
 snippet lc "list comprension"
 ${1:var} = [${2:o} for $2 in ${3:iterable}]
 endsnippet
@@ -41,7 +45,7 @@ snippet p "print"
 print("$0")
 endsnippet
 
-snippet pf "print with fstring"
+snippet fp "print with fstring"
 print(f"$0")
 endsnippet
 
@@ -168,9 +172,6 @@ snippet @co "click" b
     help="$5")
 endsnippet
 
-snippet jp "Prety print json" b
-print(json.dumps($1, indent=4))
-endsnippet
 
 snippet pv "Print Variable"
 print(f"{${1:variable}=}")
@@ -403,13 +404,13 @@ snippet fn "filename"
 ${1:filename} = pathlib.Path(${2:__file__}).resolve().parent
 endsnippet
 
-# snippet dg
-# log.debug(f'$1: {$1}')
-# endsnippet
+snippet dg
+log.debug(f'$1: {$1}')
+endsnippet
 
-# snippet ig
-# log.info(f'$1: {$1}')
-# endsnippet
+snippet ig
+log.info(f'$1: {$1}')
+endsnippet
 
 snippet lmh "lightning module headers" b
 from torch import optim
