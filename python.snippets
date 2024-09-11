@@ -13,7 +13,7 @@ print(json.dumps($1, indent=4))
 endsnippet
 
 snippet lc "list comprension"
-${1:var} = [${2:o} for $2 in ${3:iterable}]
+${1:var}: list[$2] = [${3:o} for ${4:o} in ${5:iterable}]
 endsnippet
 
 snippet dc "dictionary comprension"
@@ -36,7 +36,7 @@ snippet cl "basic class" -b
 class $1:
 	"""${2:<++>}"""
 
-	def __init__(self$3):
+	def __init__(self$3) -> None:
 		super().__init__()
 		$0
 endsnippet
@@ -91,7 +91,7 @@ sys.path.append(str(basepath))
 endsnippet
 
 snippet di "default init" b
-def __init__(self):
+def __init__(self) -> None:
 	super().__init__()
 	$1
 endsnippet
@@ -106,6 +106,10 @@ endsnippet
 
 snippet mpl "matplotlib" b
 from matplotlib import pyplot as plt
+endsnippet
+
+snippet fdc "dataclasses"
+from dataclasses import dataclass
 endsnippet
 
 snippet #h "header" b
