@@ -9,3 +9,20 @@ endsnippet
 snippet #u "Set updated" b
 # Last Updated: __
 endsnippet
+
+snippet & "quick test block" b
+[[ $1 ]] && $2
+endsnippet
+
+snippet sf "quick source block" b
+[[ -f $1 ]] && . $1
+endsnippet
+
+
+snippet ca "quick command alias" b
+command -v $1 &> /dev/null && alias $2='$1'
+endsnippet
+
+snippet nd "quick dir check" b
+[[ -d $1 ]] || mkdir -p $1
+endsnippet
