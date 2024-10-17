@@ -82,11 +82,11 @@ snippet pld "disable pylint"
 endsnippet
 
 snippet bp "basepath stuff"
-basepath = pathlib.Path(__file__).resolve().parent
+basepath = Path(__file__).resolve().parent
 endsnippet
 
 snippet spa "basepath stuff" b
-basepath = pathlib.Path(__file__).resolve().parent
+basepath = Path(__file__).resolve().parent
 sys.path.append(str(basepath))
 endsnippet
 
@@ -101,7 +101,7 @@ super().__init__()
 endsnippet
 
 snippet ipl "pathlib" b
-import pathlib
+from pathlib import Path
 endsnippet
 
 snippet mpl "matplotlib" b
@@ -433,7 +433,7 @@ from torchvision import transforms as T
 endsnippet
 
 snippet fn "filename"
-${1:filename} = pathlib.Path(${2:__file__}).resolve().parent
+${1:filename} = Path(${2:__file__}).resolve().parent
 endsnippet
 
 
