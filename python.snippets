@@ -435,6 +435,9 @@ snippet fn "filename"
 ${1:filename} = Path(${2:__file__}).resolve().parent
 endsnippet
 
+snippet home "filename"
+${1:filename} = Path.home()
+endsnippet
 
 snippet tl "lightning module headers" b
 from torch import optim
