@@ -26,3 +26,8 @@ endsnippet
 snippet nd "quick dir check" b
 [[ -d $1 ]] || mkdir -p $1
 endsnippet
+
+snippet pf "printf stuff" b
+printf "${1:%s}\n" "${${2:var}}"
+endsnippet
+
